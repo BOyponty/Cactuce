@@ -1470,117 +1470,304 @@ body {
   background-color: #009653;
   transform: translateY(-2px);
 }
-
-/* --- FOOTER --- */
+/* --- SITE FOOTER --- */
 .site-footer {
-  background-color: #052A1D;
+  position: relative;
+  width: 100vw !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  background-color: #031D14; /* Fond vert très sombre */
   color: #FFFFFF;
-  padding: 36px var(--page-padding);
+  padding: 80px 80px 30px 80px;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: var(--font-heading, 'Plus Jakarta Sans', sans-serif);
+}
+/* Rend le logo du footer blanc si nécessaire */
+.site-footer .brand-logo-img {
+  filter: brightness(0) invert(1);
+  height: 40px; /* Ajuste la hauteur au besoin */
+  width: auto;
 }
 
-.footer-container {
-  max-width: 1400px;
+/* Grille principale */
+.footer-top {
+  position: relative;
+  z-index: 2;
+  max-width: 1300px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr 1px 1.2fr;
+  gap: 40px;
+  align-items: start;
 }
 
-/* Brand Logo */
-.footer-logo {
+/* Colonne Brand */
+.footer-brand .brand-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #FFFFFF;
-  font-family: var(--font-heading);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.footer-brand .logo-text {
+  font-size: 1.8rem;
   font-weight: 800;
-  font-size: 1.25rem;
-  text-decoration: none;
-}
-
-.footer-logo .logo-icon {
-  color: var(--brand-green-bright);
-}
-
-/* Nav Links */
-.footer-nav {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-}
-
-.footer-nav a {
-  color: #A3C2B5;
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.footer-nav a:hover {
+  letter-spacing: -0.02em;
   color: #FFFFFF;
 }
 
-/* Right Section */
-.footer-right {
-  display: flex;
-  align-items: center;
-  gap: 28px;
+.footer-brand .brand-desc {
+  font-size: 0.9rem;
+  color: #A3B8B0;
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
-.lang-dropdown {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #A3C2B5;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.footer-socials {
+.social-links {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.footer-socials a {
-  color: #A3C2B5;
+.social-links a {
+  color: #FFFFFF;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.social-links a:hover {
+  opacity: 1;
+}
+
+/* Titres de colonnes */
+.col-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #00B162; /* Vert clair signature */
+  text-transform: uppercase;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #00B162;
+}
+
+/* Listes de liens */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+/* Séparateur vertical */
+.footer-v-divider {
+  width: 1px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Colonne de droite (Langue + Bouton) */
+.footer-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  padding-left: 10px;
+}
+
+.footer-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.btn-footer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-footer-pill:hover {
+  border-color: #00B162;
+  color: #00B162;
+}
+
+/* Ligne inférieure et Copyright */
+.footer-bottom-divider {
+  max-width: 1300px;
+  margin: 60px auto 24px auto;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.12);
+  position: relative;
+  z-index: 2;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: #A3B8B0;
+}
+
+.legal-links {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 16px;
+}
+
+.legal-links a {
+  color: #A3B8B0;
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.footer-socials a:hover {
+.legal-links a:hover {
   color: #FFFFFF;
 }
 
-.copyright {
-  font-size: 0.8rem;
-  color: #688B7D;
+.legal-divider {
+  opacity: 0.4;
 }
 
-/* Responsive Footer */
-@media (max-width: 900px) {
-  .cta-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 28px;
-    padding: 40px;
+/* --- RESPONSIVE MOBILE & TABLETTE --- */
+@media (max-width: 1024px) {
+  .footer-top {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  
+  .footer-v-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 50px 24px 24px 24px;
   }
 
-  .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
-  .footer-right {
+  .footer-bottom {
     flex-direction: column;
-    align-items: flex-start;
     gap: 16px;
+    text-align: center;
+  }
+
+  .footer-leaves-img {
+    width: 140px;
+    opacity: 0.4;
   }
 }
 
+/* --- ANIMATION RÉSEAU ECOSYSTEM --- */
+
+/* Anneaux avec rotation lente */
+.diagram-ring.ring-outer {
+  animation: rotateRing 40s linear infinite;
+}
+
+@keyframes rotateRing {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Effet de battement de cœur / pulse sur le nœud central */
+.node-center .center-icon {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.node-center .center-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 177, 98, 0.6);
+  z-index: -1;
+  animation: centerPulse 2.5s infinite ease-out;
+}
+
+@keyframes centerPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Style de surbrillance/clignotement pour les nœuds satellites */
+.diagram-node {
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.diagram-node .node-icon {
+  transition: all 0.4s ease;
+}
+
+.diagram-node.active .node-icon {
+  border-color: #00B162 !important;
+  background-color: #00B162 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 15px rgba(0, 177, 98, 0.8), 0 0 25px rgba(0, 177, 98, 0.4);
+  transform: scale(1.15);
+}
+
+.diagram-node.active span {
+  color: #00B162;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0, 177, 98, 0.4);
+}
