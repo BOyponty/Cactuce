@@ -18,17 +18,19 @@
 <body>
 
   <!-- HEADER -->
- <header class="site-header">
+<header class="site-header">
   <a href="#" class="brand">
     <img src="Img/logo (2).png" alt="Logo Cactuce" class="brand-logo-img">
   </a>
 
+  <!-- Navigation Desktop -->
   <nav class="desktop-nav">
     <a href="#company">Company</a>
     <a href="#solutions">Solutions</a>
     <a href="#resources">Resources</a>
   </nav>
 
+  <!-- Droite Header (Desktop & Tablette) -->
   <div class="header-right">
     <div class="lang-selector">
       FR
@@ -40,6 +42,34 @@
       Start a conversation
       <span class="btn-arrow">→</span>
     </a>
+  </div>
+
+  <!-- Bouton Burger (Mobile) -->
+  <button class="burger-menu" id="burgerBtn" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Tiroir Menu Mobile -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <nav class="mobile-nav">
+      <a href="#company">Company</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#resources">Resources</a>
+    </nav>
+    <div class="mobile-actions">
+      <div class="lang-selector">
+        FR
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+      </div>
+      <a href="#contact" class="btn btn-green-pill">
+        Start a conversation
+        <span class="btn-arrow">→</span>
+      </a>
+    </div>
   </div>
 </header>
 <!-- SECTION HERO -->
@@ -369,20 +399,15 @@
   </div>
 </section>
 <!-- SECTION 05: THE ECOSYSTEM & NEWSLETTER -->
+<!-- SECTION 05: THE ECOSYSTEM & NEWSLETTER -->
 <section class="ecosystem-section" id="ecosystem">
   <div class="ecosystem-container">
     
-    <!-- CARTE GAUCHE : THE ECOSYSTEM -->
+    <!-- CARTE GAUCHE : THE ECOSYSTEM (VERTE) -->
     <div class="ecosystem-card">
       
       <!-- Colonne Texte -->
       <div class="ecosystem-text-side">
-        <div class="section-label">
-          <span class="num">05</span>
-          <span class="line"></span>
-          <span class="label">THE ECOSYSTEM</span>
-        </div>
-
         <h2 class="ecosystem-title">
           Systems don’t exist<br>in isolation.
         </h2>
@@ -396,7 +421,7 @@
         </a>
       </div>
 
-      <!-- Colonne Réseau Circulaire -->
+      <!-- Colonne Schéma Circulaire -->
       <div class="ecosystem-diagram-side">
         <div class="ecosystem-diagram">
           <div class="diagram-ring ring-outer"></div>
@@ -446,15 +471,16 @@
 
     </div>
 
-    <!-- CARTE DROITE : STAY CONNECTED WITH CACTUCE -->
+    <!-- CARTE DROITE : NEWSLETTER (STYLE 2ÈME TEMPLATE) -->
     <div class="newsletter-card">
-      <h2 class="newsletter-title">
-        Stay connected<br>with Cactuce
-      </h2>
-
-      <p class="newsletter-desc">
-        Join our newsletter to stay up-to-date with the latest advances and insights in African digital governance.
-      </p>
+      <div class="newsletter-header">
+        <h2 class="newsletter-title">
+          Stay connected<br>with Cactuce
+        </h2>
+        <p class="newsletter-desc">
+          Join our newsletter to stay up-to-date with the latest advances and insights in African digital governance.
+        </p>
+      </div>
 
       <form class="newsletter-form" action="#" method="POST" onsubmit="event.preventDefault();">
         <div class="input-group">
@@ -466,6 +492,7 @@
 
   </div>
 </section>
+
   <!-- BANNIÈRE CALL TO ACTION (CTA) -->
   <section class="cta-banner">
     <div class="cta-container">
@@ -532,7 +559,29 @@
   </footer>
 
 
-  <script>document.addEventListener("DOMContentLoaded", () => {
+  <script>
+
+   
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+
+  if (burgerBtn && mobileDrawer) {
+    burgerBtn.addEventListener('click', () => {
+      burgerBtn.classList.toggle('open');
+      mobileDrawer.classList.toggle('active');
+    });
+
+    // Fermer le menu au clic sur un lien
+    mobileDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        burgerBtn.classList.remove('open');
+        mobileDrawer.classList.remove('active');
+      });
+    });
+  }
+
+  
+  document.addEventListener("DOMContentLoaded", () => {
   const svg = document.getElementById("networkSvg");
   const nodes = [
     { el: document.getElementById("node-connectivity"), id: 0 },
