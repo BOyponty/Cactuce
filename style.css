@@ -140,7 +140,15 @@ body {
   }
 
   .desktop-nav {
-    gap: 24px;
+    gap: 18px;
+  }
+
+  .desktop-nav a {
+    font-size: 0.88rem;
+  }
+
+  .header-right {
+    gap: 16px;
   }
 
   /* Hero Section Tablettes */
@@ -426,14 +434,6 @@ body {
   z-index: 1;
 }
 
-.map-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  /* Recadre pour centrer sur l'Afrique si ton image contient l'Europe */
-  object-position: center 20%; 
-}
-
 .network-canvas {
   position: absolute;
   top: 0;
@@ -442,38 +442,6 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 2;
-}
-
-/* --- ÉTIQUETTES (POSITIONNEMENT INDIVIDUEL STRICT) --- */
-.tag-label {
-  position: absolute !important;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #0A1913;
-  white-space: nowrap;
-  z-index: 10;
-  pointer-events: auto;
-}
-
-/* Positions fixes autour du continent */
-.tag-connectivity {
-  top: 18%;
-  left: 2%;
-}
-
-.tag-people {
-  top: 25%;
-  right: 25%;
-}
-
-.tag-data {
-  bottom: 28%;
-  left: 8%;
-}
-
-.tag-opportunity {
-  bottom: 35%;
-  right: 18%;
 }
 
 /* Styles du réseau SVG */
@@ -504,12 +472,14 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    /* Recadre pour centrer sur l'Afrique si ton image contient l'Europe */
+    object-position: center 20%;
     filter: drop-shadow(0px 10px 25px rgba(0, 0, 0, 0.04));
 }
 
 /* Étiquettes flottantes autour de la carte */
 .tag-label {
-    position: absolute;
+    position: absolute !important;
     font-size: 0.8rem;
     font-weight: 700;
     color: var(--text-dark);
@@ -517,6 +487,7 @@ body {
     padding: 0;
     box-shadow: none;
     white-space: nowrap;
+    pointer-events: auto;
     z-index: 3;
 }
 
@@ -672,14 +643,6 @@ body {
     line-height: 1.6;
     color: #B2C4BC;
 }
-/* Conteneur de la zone visuelle */
-.approach-visual {
-  width: 100%;
-  height: 100%;
-  min-height: 480px; /* S'assure d'une hauteur minimale */
-  overflow: hidden;
-}
-
 /* Style de ton image */
 .approach-img {
   width: 100%;
@@ -707,7 +670,9 @@ body {
 /* Visuel Image Droite */
 .approach-visual {
     position: relative;
+    width: 100%;
     height: 500px;
+    min-height: 480px;
     border-radius: 16px;
     overflow: hidden;
     z-index: 2;
@@ -723,6 +688,14 @@ body {
 /* Responsive pour la section Approach */
 @media (max-width: 1024px) {
     .approach-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* FIX 1 : cette règle manquait — sans elle, .approach-body-wrapper
+       gardait ses 2 colonnes (1.2fr 1fr) sur mobile, ce qui écrasait
+       le titre et la liste Strategy/Design/Engineering/Integration
+       dans des colonnes de ~140-230px de large. */
+    .approach-body-wrapper {
         grid-template-columns: 1fr;
     }
 
@@ -1134,7 +1107,7 @@ body {
   border-radius: 16px;
   overflow: hidden;
   background-color: transparent !important;
-  box-shadow: none !important; /* Supprime l'ombre si elle coupe les bords */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important; /* Même ombre que .work-visual, pour cohérence */
 }
 
 .assetiq-img {
@@ -1470,6 +1443,26 @@ body {
   background-color: #009653;
   transform: translateY(-2px);
 }
+
+/* FIX 2 : .cta-container n'avait aucune règle mobile.
+   Sur petit écran, le flex row (space-between) forçait le titre et le
+   bouton à rester côte à côte, ce qui les faisait se chevaucher et
+   provoquait un débordement horizontal sur TOUTE la page
+   (scrollWidth 424px pour un viewport de 390px). */
+@media (max-width: 768px) {
+  .cta-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 28px;
+    gap: 28px;
+  }
+
+  .btn-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* --- SITE FOOTER --- */
 .site-footer {
   position: relative;
